@@ -24,7 +24,7 @@ sweepInterval		 =	0.2	;[Hz] Frequency Sweep 인터벌
 
 3. .ini 파일에서 int형 숫자를 읽어온다면 크게 무리가 없지만, float일 경우 ```TCHAR``` 형 string을 읽어와서 float로 변경시켜줘야 한다. string은 ```GetPrivateProfileString``` 라는 함수로 읽어올 수 있다. 이 함수의 인자는 다음과 같다. 
 
-```c:
+```c:example.c
 GetPrivateProfileString(
     LPCWSTR section,
     LPCWSTR key,
@@ -35,13 +35,13 @@ GetPrivateProfileString(
     );
 ```
 각각의 입력 인자에 또 형변환을 해줘야 되니 그냥 다음과 같은 매크로를 만들자:
-```c:
+```c:example.c
 #define INI_STRING_READ(SECTION, KEY, STRING) GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\preset.ini")
 
 ```
 
 4. 마지막으로 버퍼에 저장된 스트링을 double/float형 변수에 저장하면 된다. 간략한 전체 예제를 보자:
-```c:
+```c:example.c
 #define INI_STRING_READ(SECTION, KEY, STRING) GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\preset.ini")
 
 #include <tchar.h>
