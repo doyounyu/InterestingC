@@ -50,9 +50,9 @@ GetPrivateProfileString(
 #include <stdio.h>
 
 int main() {
-	TCHAR				VrefString[20]; // double 받아올 string
+	TCHAR	 VrefString[20]; // double 받아올 string
 	INI_STRING_READ("PRESET", "StartReferenceVoltage", VrefString); // 읽은 숫자 string에 저장
-	double				Vref = _tstof(VrefString); //string -> double로 변환
+	double	 Vref = _tstof(VrefString); //string -> double로 변환
 
 }
 ```
