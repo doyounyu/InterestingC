@@ -36,13 +36,13 @@ GetPrivateProfileString(
 ```
 각각의 입력 인자에 또 형변환을 해줘야 되니 그냥 다음과 같은 매크로를 만들자:
 ```c:
-#define 	INI_STRING_READ(SECTION, KEY, STRING)				GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\Users\\doyounyu\\source\\repos\\digitalControl_3\\Debug\\preset.ini")
+#define INI_STRING_READ(SECTION, KEY, STRING) GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\preset.ini")
 
 ```
 
 4. 마지막으로 버퍼에 저장된 스트링을 double/float형 변수에 저장하면 된다. 간략한 전체 예제를 보자:
 ```c:
-#define 	INI_STRING_READ(SECTION, KEY, STRING)				GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\Users\\doyounyu\\source\\repos\\digitalControl_3\\Debug\\preset.ini")
+#define INI_STRING_READ(SECTION, KEY, STRING) GetPrivateProfileStringW((L##SECTION), (L##KEY), "1212112", (STRING), sizeof(STRING)/sizeof((STRING)[0]), L##"C:\\preset.ini")
 
 #include <tchar.h>
 #include <stdio.h>
